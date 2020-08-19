@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+    {% if query %}
+        <h2>Search Page</h2>
+        <hr>
+        {% if results %}
+        <h4>{{ results.datum }} </h4>
+        <ul>
+        <li>{{ results.title }} </li>
+        <li>{{ results.text }} </li>
+        </ul>
+        <a target="_blank" href="/news/create/">Create News page</a>
+        <br>
+        <a target="_blank" href="/news/">Back to Main Page</a>
+        {% else %}
+            <h2>{{query}} news notfound</h2>
+            <a target="_blank" href="/news/create/">Create News page</a>
+            <br>
+            <a target="_blank" href="/news/">Back to Main Page</a>
+        {% endif %}
+    {% else %}
+         <h2>Hyper news</h2>
+            <form action="" method="get">
+             <div>Search News
+            <input type="text" placeholder="news title..." name="q"/>
+            <button type="submit"  value="{{ query|escape }}">Submit</button>
+            </div><hr>
+            </form>
+        {% regroup sorted_news by datum as news_list %}
+        {% for datum, news in news_list %}
+        <h4>{{ datum }}</h4>
+        <ul>
+            {% for item in news %}
+            <li><a href="/news/{{item.link}}/">{{item.title}} </a></li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+        <a target="_blank" href="/news/create/">Create News page</a>
+    {% endif %}
+</body>
+</html>

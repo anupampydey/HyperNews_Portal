@@ -1,0 +1,19 @@
+h2 {
+    font: 46px;
+    color: purple;
+    text-align: center;
+}
+h4 {
+    font: 30px;
+    color: blueviolet;
+    margin-bottom: 5px;
+    border-bottom: 1px solid gray;
+}
+ul, a {
+    font-size: 18px;
+    background: #d0d0ff;
+}
+div {
+    font-size: 24px;
+    text-align: center;
+}

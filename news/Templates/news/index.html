@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ news_dic.link }}</title>
+</head>
+<body>
+        {% if news_dic.link %}
+        <h2>{{ news_dic.title }} </h2>
+        <p>{{ news_dic.created }} </p>
+        <p>{{ news_dic.text }} </p>
+        {% else %} <p>No News</p>
+        {% endif %}
+        <a target="_blank" href="/news/">Back to Main Page</a>
+</body>
+</html>
